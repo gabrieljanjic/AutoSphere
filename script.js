@@ -141,7 +141,7 @@ calculateBtn.addEventListener("click", function () {
       ratePValue = 11.9;
       rateP.textContent = `${ratePValue}%`;
     } else if (priceFromInput >= 20000 && priceFromInput < 30000) {
-      ratePValue = 10.9;
+      ratePValue = 9.9;
       rateP.textContent = `${ratePValue}%`;
     } else if (priceFromInput >= 30000 && priceFromInput < 75000) {
       ratePValue = 9.9;
@@ -154,12 +154,14 @@ calculateBtn.addEventListener("click", function () {
     let differencePriceFromDeposit = Number(priceFromInput) - Number(depositFromInput);
     let finalPriceCalculation = (differencePriceFromDeposit * 0.3789).toFixed(2);
     optionalFinalPaymentP.textContent = `${finalPriceCalculation}€`;
-    let fullPayement = (numberOfMonths * 2 * ratePValue + differencePriceFromDeposit).toFixed(2);
-    totalAmountRepayable.textContent = `${fullPayement}€`;
-    let creditCost = fullPayement - differencePriceFromDeposit;
-    vehicleCreditPriceP.textContent = `${creditCost}€`;
-    let finalPriceCalculationByMonths = (fullPayement / numberOfMonths).toFixed(2);
-    totalMonthPaymentP.textContent = `${finalPriceCalculationByMonths}€`;
+    let rateDecimal = ratePValue / 100;
+    let finalPriceCalculationByMonths =
+      ((differencePriceFromDeposit - finalPriceCalculation) * (rateDecimal / 12) * (1 + rateDecimal / 12) ** Number(numberOfMonths)) / ((1 + rateDecimal / 12) ** Number(numberOfMonths) - 1);
+    totalMonthPaymentP.textContent = `${finalPriceCalculationByMonths.toFixed(2)}€`;
+    let totalCostOfCredit = finalPriceCalculationByMonths * numberOfMonths + Number(finalPriceCalculation);
+    totalAmountRepayable.textContent = `${totalCostOfCredit.toFixed(2)}€`;
+    let diffenceCostInCredit = totalCostOfCredit - differencePriceFromDeposit;
+    vehicleCreditPriceP.textContent = `${diffenceCostInCredit.toFixed(2)}€`;
   } else {
     alert("You need to complete all inputs.");
     console.log(numberOfMonths);
