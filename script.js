@@ -54,43 +54,6 @@ class Car {
             <div class="line-bottom">
             </div>`;
   }
-  displayCalculator() {
-    return `<div class="calculator">
-              <div class="left-part-calculator">
-                <h1 class="calculator-heading">Car Finance calculator</h1>
-                <h2 class="calculator-question">What is the price of a car?</h2>
-                <input id="calculator-price-input" class="calculator-input" type="number" required />
-                <h2 class="calculator-question">Do you have a deposit?</h2>
-                <input id="calculator-deposit-input" class="calculator-input" type="number" required />
-                <h2 class="calculator-question">How months do you want to borrow for?</h2>
-                <div class="months-options">
-                  <input class="months-options-btn" type="button" value="24" />
-                  <input class="months-options-btn" type="button" value="36" />
-                  <input class="months-options-btn" type="button" value="48" />
-                  <input class="months-options-btn" type="button" value="60" />
-                </div>
-                <button class="calculate" type="submit">Calculate</button>
-              </div>
-              <div class="right-part-calculator">
-               <p class="calculator-varibales">Vehicle price:</p>
-               <p class="calculator-varibales right-part-calculator-right-elements" id="vehicle-price">100.000$</p>
-               <p class="calculator-varibales">Deposit:</p>
-               <p class="calculator-varibales right-part-calculator-right-elements" id="deposit">0$</p>
-               <p class="calculator-varibales">Rate:</p>
-                <p class="calculator-varibales right-part-calculator-right-elements" id="rate">8.6%</p>
-               <p class="calculator-varibales">Optional final payment:</p>
-               <p class="calculator-varibales right-part-calculator-right-elements" id="optional-final-paymant">10.000$</p>
-               <p class="calculator-varibales">Total cost of credit:</p>
-               <p class="calculator-varibales right-part-calculator-right-elements" id="vehicle price">100.000$</p>
-               <p class="calculator-varibales">Total amount repayable:</p>
-               <p class="calculator-varibales right-part-calculator-right-elements" id="total-amount-repayable">120.000$</p>
-                <p class="calculator-varibales bold">48 monthly payments of:</p>
-               <p class="calculator-varibales right-part-calculator-right-elements bold bigger-text" id="total-amount-repayable">4.000$</p>
-              </div>
-            </div>
-            <div class="line-bottom"></div>
-    `;
-  }
 }
 
 const cars = [
@@ -112,11 +75,7 @@ cars.forEach((car) => {
 //Each car Details
 const carAllDetails = document.getElementById("car-all-details");
 
-/*
-cars.forEach((car) => {
-  carAllDetails.innerHTML += car.displayCarDetails();
-});
-*/
+const calculator = document.querySelector(".calculator");
 //Changing windows + Selected car displaying
 const carEach = document.querySelectorAll(".car-each");
 const carEachDetails = document.querySelectorAll(".car-details");
@@ -126,10 +85,12 @@ carEach.forEach((car) => {
     const selectedCar = cars.find((carFind) => carFind.imgTag === imgTagE);
     if (selectedCar) {
       //Adding seceond screen
-      carAllDetails.innerHTML = selectedCar.displayCarDetails() + selectedCar.displayCalculator();
-
+      carAllDetails.innerHTML = selectedCar.displayCarDetails(); /* + selectedCar.displayCalculator();*/
+      carAllDetails.appendChild(calculator);
+      calculator.classList.remove("hidden");
       const closeBtn = document.querySelector(".close-btn");
       closeBtn.addEventListener("click", function () {
+        calculator.classList.add("hidden");
         carAllDetails.innerHTML = "";
         carEach.forEach((el) => {
           el.classList.remove("hidden");
@@ -139,15 +100,68 @@ carEach.forEach((car) => {
     carEach.forEach((el) => {
       el.classList.add("hidden");
     });
+    calculator.classList.remove("hidden");
   });
 });
 
-//Adding functionality to calculator
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("months-options-btn")) {
-    document.querySelectorAll(".months-options-btn").forEach((btn) => {
+const monthOptionContainer = document.querySelector(".months-options-container");
+const optionRateAllBtns = document.querySelectorAll(".months-options-btn");
+let numberOfMonths = 24;
+monthOptionContainer.addEventListener("click", function (e) {
+  if (e.target && e.target.classList.contains("months-options-btn")) {
+    optionRateAllBtns.forEach((btn) => {
       btn.classList.remove("months-options-btn-clicked");
     });
     e.target.classList.add("months-options-btn-clicked");
+    numberOfMonths = e.target.value;
+  }
+});
+
+const calculatorPriceInput = document.getElementById("calculator-price-input");
+const calculatorDepositInput = document.getElementById("calculator-deposit-input");
+const calculateBtn = document.getElementById("calculate");
+const vehiclePriceP = document.getElementById("vehicle-price-p");
+const depositP = document.getElementById("deposit-p");
+const rateP = document.getElementById("rate-p");
+const optionalFinalPaymentP = document.getElementById("optional-final-payment-p");
+const vehicleCreditPriceP = document.getElementById("vehicle-credit-price-p");
+const totalAmountRepayable = document.getElementById("total-amount-repayable-p");
+const totalMonthPaymentP = document.getElementById("total-month-payment-p");
+
+calculateBtn.addEventListener("click", function () {
+  const priceFromInput = calculatorPriceInput.value;
+  const depositFromInput = calculatorDepositInput.value;
+  if (priceFromInput && depositFromInput) {
+    vehiclePriceP.textContent = `${priceFromInput}€`;
+    depositP.textContent = `${depositFromInput}€`;
+    let ratePValue;
+    if (priceFromInput < 10000) {
+      console.log("Moram dovrsit kasnije");
+    } else if (priceFromInput < 20000 && priceFromInput > 10000) {
+      ratePValue = 11.9;
+      rateP.textContent = `${ratePValue}%`;
+    } else if (priceFromInput >= 20000 && priceFromInput < 30000) {
+      ratePValue = 10.9;
+      rateP.textContent = `${ratePValue}%`;
+    } else if (priceFromInput >= 30000 && priceFromInput < 75000) {
+      ratePValue = 9.9;
+      rateP.textContent = `${ratePValue}%`;
+    } else {
+      ratePValue = 8.9;
+      rateP.textContent = `${ratePValue}%`;
+    }
+
+    let differencePriceFromDeposit = Number(priceFromInput) - Number(depositFromInput);
+    let finalPriceCalculation = (differencePriceFromDeposit * 0.3789).toFixed(2);
+    optionalFinalPaymentP.textContent = `${finalPriceCalculation}€`;
+    let fullPayement = (numberOfMonths * 2 * ratePValue + differencePriceFromDeposit).toFixed(2);
+    totalAmountRepayable.textContent = `${fullPayement}€`;
+    let creditCost = fullPayement - differencePriceFromDeposit;
+    vehicleCreditPriceP.textContent = `${creditCost}€`;
+    let finalPriceCalculationByMonths = (fullPayement / numberOfMonths).toFixed(2);
+    totalMonthPaymentP.textContent = `${finalPriceCalculationByMonths}€`;
+  } else {
+    alert("You need to complete all inputs.");
+    console.log(numberOfMonths);
   }
 });

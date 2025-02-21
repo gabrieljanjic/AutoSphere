@@ -23,7 +23,41 @@
       </ul>
     </navigation>
     <section class="cars-all" id="cars-all"></section>
-    <section class="car-all-details" id="car-all-details"></section>
+    <section class="car-all-details" id="car-all-details">
+      <div class="calculator hidden">
+        <div class="left-part-calculator">
+          <h1 class="calculator-heading">Car Finance calculator</h1>
+          <h2 class="calculator-question">What is the price of a car?</h2>
+          <input id="calculator-price-input" class="calculator-input" type="number" required />
+          <h2 class="calculator-question">Do you have a deposit?</h2>
+          <input id="calculator-deposit-input" class="calculator-input" type="number" required />
+          <h2 class="calculator-question">How months do you want to borrow for?</h2>
+          <div class="months-options-container">
+            <input class="months-options-btn months-options-btn-clicked" type="button" value="24" />
+            <input class="months-options-btn" type="button" value="36" />
+            <input class="months-options-btn" type="button" value="48" />
+            <input class="months-options-btn" type="button" value="60" />
+          </div>
+          <button class="calculate" id="calculate" type="submit">Calculate</button>
+        </div>
+        <div class="right-part-calculator">
+          <p class="calculator-varibales">Vehicle price:</p>
+          <p class="calculator-varibales right-part-calculator-right-elements" id="vehicle-price-p"></p>
+          <p class="calculator-varibales">Deposit:</p>
+          <p class="calculator-varibales right-part-calculator-right-elements" id="deposit-p"></p>
+          <p class="calculator-varibales">Rate:</p>
+          <p class="calculator-varibales right-part-calculator-right-elements" id="rate-p"></p>
+          <p class="calculator-varibales">Optional final payment:</p>
+          <p class="calculator-varibales right-part-calculator-right-elements" id="optional-final-payment-p"></p>
+          <p class="calculator-varibales">Total cost of credit:</p>
+          <p class="calculator-varibales right-part-calculator-right-elements" id="vehicle-credit-price-p"></p>
+          <p class="calculator-varibales">Total amount repayable:</p>
+          <p class="calculator-varibales right-part-calculator-right-elements" id="total-amount-repayable-p"></p>
+          <p class="calculator-varibales bold">48 monthly payments of:</p>
+          <p class="calculator-varibales right-part-calculator-right-elements bold bigger-text" id="total-month-payment-p"></p>
+        </div>
+      </div>
+    </section>
     <script src="script.js"></script>
   </body>
 </html>
