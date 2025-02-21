@@ -27,6 +27,7 @@ class Car {
   }
   displayCarDetails() {
     return `<div class="car-details">
+              <button class="close-btn">↩</button>
               <div class="car-inner-details-left">
                 <h5 class="car-name-inner">${this.make}</h5>
                 <p class="car-edition-inner">${this.model}</p>
@@ -51,8 +52,44 @@ class Car {
                 <img src="imgs/${this.imgTag}.jpg" class="inner-img" />
               </div>
             <div class="line-bottom">
+            </div>`;
+  }
+  displayCalculator() {
+    return `<div class="calculator">
+              <div class="left-part-calculator">
+                <h1 class="calculator-heading">Car Finance calculator</h1>
+                <h2 class="calculator-question">What is the price of a car?</h2>
+                <input id="calculator-price-input" class="calculator-input" type="number" required />
+                <h2 class="calculator-question">Do you have a deposit?</h2>
+                <input id="calculator-deposit-input" class="calculator-input" type="number" required />
+                <h2 class="calculator-question">How months do you want to borrow for?</h2>
+                <div class="months-options">
+                  <input class="months-options-btn" type="button" value="24" />
+                  <input class="months-options-btn" type="button" value="36" />
+                  <input class="months-options-btn" type="button" value="48" />
+                  <input class="months-options-btn" type="button" value="60" />
+                </div>
+                <button class="calculate" type="submit">Calculate</button>
+              </div>
+              <div class="right-part-calculator">
+               <p class="calculator-varibales">Vehicle price:</p>
+               <p class="calculator-varibales right-part-calculator-right-elements" id="vehicle-price">100.000$</p>
+               <p class="calculator-varibales">Deposit:</p>
+               <p class="calculator-varibales right-part-calculator-right-elements" id="deposit">0$</p>
+               <p class="calculator-varibales">Rate:</p>
+                <p class="calculator-varibales right-part-calculator-right-elements" id="rate">8.6%</p>
+               <p class="calculator-varibales">Optional final payment:</p>
+               <p class="calculator-varibales right-part-calculator-right-elements" id="optional-final-paymant">10.000$</p>
+               <p class="calculator-varibales">Total cost of credit:</p>
+               <p class="calculator-varibales right-part-calculator-right-elements" id="vehicle price">100.000$</p>
+               <p class="calculator-varibales">Total amount repayable:</p>
+               <p class="calculator-varibales right-part-calculator-right-elements" id="total-amount-repayable">120.000$</p>
+                <p class="calculator-varibales bold">48 monthly payments of:</p>
+               <p class="calculator-varibales right-part-calculator-right-elements bold bigger-text" id="total-amount-repayable">4.000$</p>
+              </div>
             </div>
-            `;
+            <div class="line-bottom"></div>
+    `;
   }
 }
 
@@ -80,19 +117,37 @@ cars.forEach((car) => {
   carAllDetails.innerHTML += car.displayCarDetails();
 });
 */
-//Changing windows
+//Changing windows + Selected car displaying
 const carEach = document.querySelectorAll(".car-each");
 const carEachDetails = document.querySelectorAll(".car-details");
 carEach.forEach((car) => {
   car.addEventListener("click", function () {
-    const imgTagE = car.getAttribute("data-imgtag");
+    const imgTagE = car.getAttribute("data-imgTag");
     const selectedCar = cars.find((carFind) => carFind.imgTag === imgTagE);
     if (selectedCar) {
-      console.log(carAllDetails);
-      carAllDetails.innerHTML = selectedCar.displayCarDetails();
+      //Adding seceond screen
+      carAllDetails.innerHTML = selectedCar.displayCarDetails() + selectedCar.displayCalculator();
+
+      const closeBtn = document.querySelector(".close-btn");
+      closeBtn.addEventListener("click", function () {
+        carAllDetails.innerHTML = "";
+        carEach.forEach((el) => {
+          el.classList.remove("hidden");
+        });
+      });
     }
     carEach.forEach((el) => {
       el.classList.add("hidden");
     });
   });
+});
+
+//Adding functionality to calculator
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("months-options-btn")) {
+    document.querySelectorAll(".months-options-btn").forEach((btn) => {
+      btn.classList.remove("months-options-btn-clicked");
+    });
+    e.target.classList.add("months-options-btn-clicked");
+  }
 });
