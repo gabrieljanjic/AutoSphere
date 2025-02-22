@@ -67,13 +67,13 @@ const cars = [
 ];
 
 //Car list
-const carsAll = document.getElementById("cars-all");
+const carsAllSection = document.getElementById("cars-all-section");
 cars.forEach((car) => {
-  carsAll.innerHTML += car.displayList();
+  carsAllSection.innerHTML += car.displayList();
 });
 
 //Each car Details
-const carAllDetails = document.getElementById("car-all-details");
+const carAllDetailsSection = document.getElementById("car-all-details-section");
 
 const calculator = document.querySelector(".calculator");
 //Changing windows + Selected car displaying
@@ -85,13 +85,14 @@ carEach.forEach((car) => {
     const selectedCar = cars.find((carFind) => carFind.imgTag === imgTagE);
     if (selectedCar) {
       //Adding seceond screen
-      carAllDetails.innerHTML = selectedCar.displayCarDetails(); /* + selectedCar.displayCalculator();*/
-      carAllDetails.appendChild(calculator);
+      carAllDetailsSection.classList.remove("hidden");
+      carAllDetailsSection.innerHTML = selectedCar.displayCarDetails(); /* + selectedCar.displayCalculator();*/
+      carAllDetailsSection.appendChild(calculator);
       calculator.classList.remove("hidden");
       const closeBtn = document.querySelector(".close-btn");
       closeBtn.addEventListener("click", function () {
         calculator.classList.add("hidden");
-        carAllDetails.innerHTML = "";
+        carAllDetailsSection.innerHTML = "";
         carEach.forEach((el) => {
           el.classList.remove("hidden");
         });
@@ -166,4 +167,42 @@ calculateBtn.addEventListener("click", function () {
     alert("You need to complete all inputs.");
     console.log(numberOfMonths);
   }
+});
+document.getElementById("car-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const imgTagForm = document.getElementById("imgTag-form").value;
+  const makeForm = document.getElementById("make-form").value;
+  const modelForm = document.getElementById("model-form").value;
+  const yearForm = document.getElementById("year-form").value;
+  const milageForm = document.getElementById("milage-form").value;
+  const transmissionForm = document.getElementById("transmission-form").value;
+  const fuelForm = document.getElementById("fuel-form").value;
+  const horsepowerForm = document.getElementById("horsepower-form").value;
+  const priceForm = document.getElementById("price-form").value;
+  const shapeForm = document.getElementById("shape-form").value;
+
+  const newCar = new Car(imgTagForm, makeForm, modelForm, yearForm, milageForm, transmissionForm, fuelForm, horsepowerForm, priceForm, shapeForm);
+  cars.push(newCar);
+  displayingAllCars();
+  carFormSection.classList.add("hidden");
+  carsAllSection.classList.remove("hidden");
+  carAllDetailsSection.classList.add("hidden");
+});
+//Navigation Button
+const uploadYourCarBtn = document.getElementById("upload-your-car");
+const carFormSection = document.getElementById("car-form-section");
+uploadYourCarBtn.addEventListener("click", function () {
+  carFormSection.classList.remove("hidden");
+  carEach.forEach((el) => {
+    el.classList.add("hidden");
+  });
+  carAllDetailsSection.classList.add("hidden");
+});
+//Back button for form
+const closeBtnForm = document.getElementById("close-btn-form");
+closeBtnForm.addEventListener("click", function () {
+  carFormSection.classList.add("hidden");
+  carEach.forEach((el) => {
+    el.classList.remove("hidden");
+  });
 });

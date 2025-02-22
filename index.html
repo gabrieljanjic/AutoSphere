@@ -18,12 +18,12 @@
       <img class="logo" src="imgs/car-logo.JPG" />
       <ul class="nav-ul">
         <li class="nav-li">Something</li>
-        <li class="nav-li">Something2</li>
+        <li class="nav-li" id="upload-your-car">Upload your car</li>
         <li class="nav-li">Something3</li>
       </ul>
     </navigation>
-    <section class="cars-all" id="cars-all"></section>
-    <section class="car-all-details" id="car-all-details">
+    <section class="cars-all" id="cars-all-section"></section>
+    <section class="car-all-details" id="car-all-details-section">
       <div class="calculator hidden">
         <div class="left-part-calculator">
           <h1 class="calculator-heading">Car Finance calculator</h1>
@@ -57,6 +57,22 @@
           <p class="calculator-varibales right-part-calculator-right-elements bold bigger-text" id="total-month-payment-p"></p>
         </div>
       </div>
+    </section>
+    <section class="car-form-section hidden" id="car-form-section">
+      <button class="close-btn" id="close-btn-form">↩</button>
+      <form class="car-form" id="car-form">
+        <input type="text" class="input-form-element" id="imgTag-form" required />
+        <input type="text" class="input-form-element" id="make-form" required />
+        <input type="text" class="input-form-element" id="model-form" required />
+        <input type="number" class="input-form-element" id="year-form" required />
+        <input type="number" class="input-form-element" id="milage-form" required />
+        <input type="text" class="input-form-element" id="transmission-form" required />
+        <input type="text" class="input-form-element" id="fuel-form" required />
+        <input type="number" class="input-form-element" id="horsepower-form" required />
+        <input type="number" class="input-form-element" id="price-form" required />
+        <input type="text" class="input-form-element" id="shape-form" required />
+        <button type="submit" class="submit-form">Submit</button>
+      </form>
     </section>
     <script src="script.js"></script>
   </body>

@@ -30,6 +30,11 @@ body {
 }
 .logo {
   width: 10rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.logo:hover {
+  transform: scale(1.02);
 }
 .nav-ul {
   list-style: none;
