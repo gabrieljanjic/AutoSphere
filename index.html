@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AutoSphere</title>
+    <title>AutoSphere | Your Best Dealer, Your Best Drive!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,7 +15,7 @@
     <link rel="icon" type="image/x-icon" href="imgs/car-logo-favicon.jpg" />
   </head>
   <body>
-    <navigation class="nav">
+    <navigation class="nav nav-margin-bottom">
       <img class="logo" src="imgs/car-logo.JPG" />
       <ul class="nav-ul">
         <li class="nav-li" id="used-cars">Used Cars</li>
@@ -57,33 +57,42 @@
           <p class="calculator-varibales right-part-calculator-right-elements bold bigger-text" id="total-month-payment-p"></p>
         </div>
       </div>
+      <div class="calculator-under hidden">
+        <p class="calculator-explanation">
+          Hire Purchase (HP) Representative example: Borrow <span class="bold">27,500.00€</span> over <span class="bold">5</span> years, with a <span class="bold">2,750.00€</span> deposit.
+          Representative APR <span class="bold">9.9%</span>, fixed rate. Monthly payment: <span class="bold">325.86€</span> Total cost of credit: <span class="bold">4179.29€</span> Total amount
+          repayable: <span class="bold">28,929.29€</span>.
+        </p>
+      </div>
     </section>
     <section class="car-form-section hidden" id="car-form-section">
-      <button class="close-btn close-btn-form" id="close-btn-form">↩</button>
-      <h3 class="form-heading">Vehicle for Sale:</h3>
-      <form class="car-form" id="car-form">
-        <label class="form-label" for="imgTag-form">Image URL:</label>
-        <input type="text" class="input-form-element" id="imgTag-form" required />
-        <label class="form-label" for="make-form">Make (Brand):</label>
-        <input type="text" class="input-form-element" id="make-form" required />
-        <label class="form-label" for="model-form">Model:</label>
-        <input type="text" class="input-form-element" id="model-form" required />
-        <label class="form-label" for="year-form">Year:</label>
-        <input type="number" class="input-form-element" id="year-form" required />
-        <label class="form-label" for="milage-form">Milage:</label>
-        <input type="number" class="input-form-element" id="milage-form" required />
-        <label class="form-label" for="transmission-form">Transmission:</label>
-        <input type="text" class="input-form-element" id="transmission-form" required />
-        <label class="form-label" for="fuel-form">Fuel Type:</label>
-        <input type="text" class="input-form-element" id="fuel-form" required />
-        <label class="form-label" for="horsepower-form">Horsepower (HP):</label>
-        <input type="number" class="input-form-element" id="horsepower-form" required />
-        <label class="form-label" for="price-form">Price (€):</label>
-        <input type="number" class="input-form-element" id="price-form" required />
-        <label class="form-label" for="shape-form">Car shape:</label>
-        <input type="text" class="input-form-element" id="shape-form" required />
-        <button type="submit" class="submit-form">Submit</button>
-      </form>
+      <div class="center">
+        <button class="close-btn close-btn-form" id="close-btn-form">↩</button>
+        <h3 class="form-heading">Vehicle for Sale:</h3>
+        <form class="car-form" id="car-form">
+          <label class="form-label" for="imgTag-form">Image URL:</label>
+          <input type="text" class="input-form-element" id="imgTag-form" required />
+          <label class="form-label" for="make-form">Make (Brand):</label>
+          <input type="text" class="input-form-element" id="make-form" required />
+          <label class="form-label" for="model-form">Model:</label>
+          <input type="text" class="input-form-element" id="model-form" required />
+          <label class="form-label" for="year-form">Year:</label>
+          <input type="number" class="input-form-element" id="year-form" required />
+          <label class="form-label" for="milage-form">Milage:</label>
+          <input type="number" class="input-form-element" id="milage-form" required />
+          <label class="form-label" for="transmission-form">Transmission:</label>
+          <input type="text" class="input-form-element" id="transmission-form" required />
+          <label class="form-label" for="fuel-form">Fuel Type:</label>
+          <input type="text" class="input-form-element" id="fuel-form" required />
+          <label class="form-label" for="horsepower-form">Horsepower (HP):</label>
+          <input type="number" class="input-form-element" id="horsepower-form" required />
+          <label class="form-label" for="price-form">Price (€):</label>
+          <input type="number" class="input-form-element" id="price-form" required />
+          <label class="form-label" for="shape-form">Car shape:</label>
+          <input type="text" class="input-form-element" id="shape-form" required />
+          <button type="submit" class="submit-form">Submit</button>
+        </form>
+      </div>
     </section>
     <script src="script.js"></script>
   </body>
