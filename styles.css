@@ -14,8 +14,8 @@
 }
 body {
   width: 100%;
-  background-color: var(--white-color);
   font-family: Poppins, sans-serif;
+  background-color: var(--white-color);
 }
 
 .nav {
@@ -23,8 +23,8 @@ body {
   justify-content: center;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
   width: 100%;
+  padding: 1rem 2rem;
   background-color: var(--white-color);
   border-bottom: 1px solid var(--gray-color);
 }
@@ -37,16 +37,16 @@ body {
   transform: scale(1.02);
 }
 .nav-ul {
-  list-style: none;
   display: flex;
-  gap: 1rem;
   flex-direction: row;
+  gap: 1rem;
+  list-style: none;
 }
 .nav-li {
   cursor: pointer;
 }
 .cars-all {
-  margin-top: 1rem; /*za sad*/
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,13 +57,13 @@ body {
   grid-template-columns: 1fr 1fr;
   height: 15rem;
   max-width: 48rem;
-  cursor: pointer;
   box-shadow: 0rem 0rem 1rem rgba(0, 0, 0, 0.2);
   background-color: var(--white-color);
   border-radius: 4px;
 
   margin-bottom: 1.5rem;
   transition: all 0.2s ease;
+  cursor: pointer;
   overflow: hidden;
 }
 .car-each:hover {
@@ -85,9 +85,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 15rem;
   padding: 1rem 2rem;
   color: #003149;
-  height: 15rem;
 }
 .car-name {
   font-size: 1.4rem;
@@ -103,8 +103,8 @@ body {
 .line {
   width: 100%;
   height: 1px;
-  background-color: var(--gray-color);
   margin-bottom: 1.4rem;
+  background-color: var(--gray-color);
 }
 .car-price {
   font-size: 1.6rem;
@@ -113,12 +113,12 @@ body {
 
 /*Inner page*/
 .car-all-details {
-  margin: 2rem;
   display: grid;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: 1fr;
   row-gap: 6rem;
-  align-items: center;
-  justify-items: center;
+  margin: 2rem;
 }
 
 .car-details {
@@ -129,10 +129,10 @@ body {
 }
 
 .car-inner-details-left {
-  color: #003149;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  color: #003149;
 }
 .car-name-inner {
   font-size: 2.4rem;
@@ -168,12 +168,12 @@ body {
   object-position: center;
 }
 .close-btn {
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  cursor: pointer;
   display: flex;
   grid-column: span 2;
+  font-size: 1.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .inner-img {
@@ -184,35 +184,35 @@ body {
 
 /*Calculator*/
 .calculator {
-  grid-column: span 2;
+  display: grid;
   justify-self: center;
+  grid-template-columns: 1fr 1fr;
+  grid-column: span 2;
+  gap: 2rem;
   max-width: 56rem;
   width: 100%;
-  background-color: var(--calculator-color);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
   padding: 1.4rem 2rem;
   border-radius: 1rem;
   margin-bottom: 5rem;
+  background-color: var(--calculator-color);
 }
 .left-part-calculator {
   position: relative;
   top: -15%;
-  background-color: white;
-  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.4);
-  padding: 1.4rem;
-  border-radius: 0.5rem;
   width: 100%;
   height: 130%;
+  padding: 1.4rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.4);
+  background-color: white;
 }
 .right-part-calculator {
   display: grid;
   align-items: center;
-  row-gap: 0.6rem;
   grid-template-columns: 1.4fr 1fr;
-  color: var(--white-color);
+  row-gap: 0.6rem;
   font-size: 1.1rem;
+  color: var(--white-color);
 }
 .right-part-calculator-right-elements {
   justify-self: right;
@@ -226,12 +226,12 @@ body {
   font-size: 1rem;
 }
 .calculator-input {
-  width: 100%;
-  border: 1px solid var(--gray-hard-color);
-  border-radius: 0.2rem;
   font-size: 1rem;
+  width: 100%;
   padding: 0.4rem 0.6rem;
+  border-radius: 0.2rem;
   margin-bottom: 1rem;
+  border: 1px solid var(--gray-hard-color);
 }
 .months-options {
   display: flex;
@@ -240,36 +240,80 @@ body {
 }
 .months-options-btn {
   margin-top: 0.4rem;
+  font-size: 1rem;
+  padding: 0.6rem 2rem;
+  border-radius: 0.2rem;
   background: none;
   border: 1px solid var(--gray-hard-color);
-  padding: 0.6rem 2rem;
-  font-size: 1rem;
-  border-radius: 0.2rem;
-  cursor: pointer;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 .months-options-btn-clicked {
-  border: 1px solid var(--calculator-color);
-  color: var(--calculator-color);
   font-weight: 600;
+  color: var(--calculator-color);
+  border: 1px solid var(--calculator-color);
 }
 .calculate {
   margin-top: 1.6rem;
-  padding: 1.4rem;
+  width: 100%;
   font-size: 1.4rem;
+  font-weight: 600;
   letter-spacing: 1px;
   padding: 0.4rem;
-  width: 100%;
   border-radius: 0.2rem;
-  font-weight: 600;
-  background-color: var(--calculator-color);
-  color: var(--white-color);
   border: none;
+  color: var(--white-color);
+  background-color: var(--calculator-color);
   transition: all 0.4s ease;
   cursor: pointer;
 }
 .calculate:hover {
   background-color: #cc7459;
+}
+
+/*From*/
+.car-form-section {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  max-width: 30rem;
+  width: 100%;
+}
+.form-heading {
+  font-size: 1.6rem;
+  color: var(--text-darker-color);
+}
+.car-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 1.2rem 1.6rem;
+  border-radius: 0.6rem;
+  background: linear-gradient(135deg, var(--text-color), var(--text-darker-color));
+}
+
+.form-label {
+  font-size: 1.2rem;
+  color: var(--gray-color);
+}
+.input-form-element {
+  margin-top: -0.1rem;
+  font-size: 1.2rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  margin-bottom: 0.4rem;
+}
+.submit-form {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0.6rem;
+  border-radius: 0.2rem;
+  background: none;
+  color: var(--gray-color);
+  background-color: var(--text-darker-color);
+  border: 1px solid var(--gray-color);
+  cursor: pointer;
 }
 /*Universal*/
 .bold {
