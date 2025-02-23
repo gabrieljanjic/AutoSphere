@@ -43,7 +43,7 @@ class Car {
                   <img src="icons/transmission.png" class="icon" />
                   <p class="car-inner-spec">${this.transmission}</p>
                   <img src="icons/model.png" class="icon" />
-                  <p class="car-inner-spec">4</p>
+                  <p class="car-inner-spec">${this.shape}</p>
                   <img src="icons/horsepower.png" class="icon" />
                   <p class="car-inner-spec">${this.horsepower}hp</p>
                 </div>
